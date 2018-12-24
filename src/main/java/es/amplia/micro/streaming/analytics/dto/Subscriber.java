@@ -1,6 +1,6 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class SubscriberDto {
+public class Subscriber {
 
 	private Long id;
 	private String name;
@@ -9,14 +9,14 @@ public class SubscriberDto {
 	private String operator;
 	private String imsi;
 	private String msisdn;
-	private AddressDto addressDto;
+	private Address address;
 	
-	public SubscriberDto() {
+	public Subscriber() {
 		
 	}
 	
-	public SubscriberDto(Long id, String name, String type, String description, String operator, String imsi,
-			String msisdn, AddressDto address) {
+	public Subscriber(Long id, String name, String type, String description, String operator, String imsi,
+			String msisdn, Address address) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,7 +25,7 @@ public class SubscriberDto {
 		this.operator = operator;
 		this.imsi = imsi;
 		this.msisdn = msisdn;
-		this.addressDto = address;
+		this.address = address;
 	}
 	
 	public Long getId() {
@@ -70,10 +70,10 @@ public class SubscriberDto {
 	public void setMsisdn(String msisdn) {
 		this.msisdn = msisdn;
 	}
-	public AddressDto getAddressDto() {
-		return addressDto;
+	public Address getAddress() {
+		return address;
 	}
-	public void setAddressDto(AddressDto addressDto) {
-		this.addressDto = addressDto;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }

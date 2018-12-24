@@ -1,20 +1,20 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class RamDto {
+public class Ram {
 
 	private String unit;
 	private String total;
-	private UsageDto ramUsageDto;
+	private Usage ramUsage;
 	
-	public RamDto() {
+	public Ram() {
 		
 	}
 	
-	public RamDto(String unit, String total, RamUsageDto ramUsageDto) {
+	public Ram(String unit, String total, Usage ramUsage) {
 		super();
 		this.unit = unit;
 		this.total = total;
-		this.ramUsageDto = ramUsageDto;
+		this.ramUsage = ramUsage;
 	}
 	
 	public String getUnit() {
@@ -29,10 +29,10 @@ public class RamDto {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	public UsageDto getRamUsageDto() {
-		return ramUsageDto;
+	public Usage getRamUsage() {
+		return ramUsage;
 	}
-	public void setUsageDto(UsageDto ramUsageDto) {
-		this.ramUsageDto = ramUsageDto;
+	public void setUsage(Usage ramUsage) {
+		this.ramUsage = ramUsage;
 	}
 }

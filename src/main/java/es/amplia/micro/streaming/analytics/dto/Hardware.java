@@ -1,23 +1,23 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class HardwareDto {
+public class Hardware {
 
 	private String serialNumber;
-	private ManufacturerDto manufacturerDto;
-	private ModelDto modelDto;
+	private Manufacturer manufacturer;
+	private Model model;
 	private String clockDate;
 	private String upTime;
 	
-	public HardwareDto() {
+	public Hardware() {
 		
 	}
 	
-	public HardwareDto(String serialNumber, ManufacturerDto manufacturerDto, ModelDto modelDto, String clockDate,
+	public Hardware(String serialNumber, Manufacturer manufacturer, Model model, String clockDate,
 			String upTime) {
 		super();
 		this.serialNumber = serialNumber;
-		this.manufacturerDto = manufacturerDto;
-		this.modelDto = modelDto;
+		this.manufacturer = manufacturer;
+		this.model = model;
 		this.clockDate = clockDate;
 		this.upTime = upTime;
 	}
@@ -27,17 +27,17 @@ public class HardwareDto {
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
-	public ManufacturerDto getManufacturerDto() {
-		return manufacturerDto;
+	public Manufacturer getManufacturer() {
+		return manufacturer;
 	}
-	public void setManufacturerDto(ManufacturerDto manufacturerDto) {
-		this.manufacturerDto = manufacturerDto;
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
 	}
-	public ModelDto getModelDto() {
-		return modelDto;
+	public Model getModel() {
+		return model;
 	}
-	public void setModelDto(ModelDto modelDto) {
-		this.modelDto = modelDto;
+	public void setModel(Model model) {
+		this.model = model;
 	}
 	public String getClockDate() {
 		return clockDate;

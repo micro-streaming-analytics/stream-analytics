@@ -1,17 +1,17 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class SoftwareDto {
+public class Software {
 
 	private String name;
 	private String type;
 	private String version;
 	private String date;
 	
-	public SoftwareDto() {
+	public Software() {
 		
 	}
 	
-	public SoftwareDto(String name, String type, String version, String date) {
+	public Software(String name, String type, String version, String date) {
 		super();
 		this.name = name;
 		this.type = type;

@@ -1,16 +1,16 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class BatteryChargeLevelDto {
+public class BatteryChargeLevel {
 
 	private String trend;
 	private String status;
 	private String percentage;
 	
-	public BatteryChargeLevelDto() {
+	public BatteryChargeLevel() {
 		
 	}
 	
-	public BatteryChargeLevelDto(String trend, String status, String percentage) {
+	public BatteryChargeLevel(String trend, String status, String percentage) {
 		super();
 		this.trend = trend;
 		this.status = status;

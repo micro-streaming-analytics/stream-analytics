@@ -1,17 +1,17 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class PowerSupplyDto {
+public class PowerSupply {
 
 	private String source;
 	private String status;
-	private BatteryChargeLevelDto batteryChargeLevel;
-	private OutageDto outage;
+	private BatteryChargeLevel batteryChargeLevel;
+	private Outage outage;
 	
-	public PowerSupplyDto() {
+	public PowerSupply() {
 		
 	}
 	
-	public PowerSupplyDto(String source, String status, BatteryChargeLevelDto batteryChargeLevel, OutageDto outage) {
+	public PowerSupply(String source, String status, BatteryChargeLevel batteryChargeLevel, Outage outage) {
 		super();
 		this.source = source;
 		this.status = status;
@@ -31,16 +31,16 @@ public class PowerSupplyDto {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public BatteryChargeLevelDto getBatteryChargeLevel() {
+	public BatteryChargeLevel getBatteryChargeLevel() {
 		return batteryChargeLevel;
 	}
-	public void setBatteryChargeLevel(BatteryChargeLevelDto batteryChargeLevel) {
+	public void setBatteryChargeLevel(BatteryChargeLevel batteryChargeLevel) {
 		this.batteryChargeLevel = batteryChargeLevel;
 	}
-	public OutageDto getOutage() {
+	public Outage getOutage() {
 		return outage;
 	}
-	public void setOutage(OutageDto outage) {
+	public void setOutage(Outage outage) {
 		this.outage = outage;
 	}
 	

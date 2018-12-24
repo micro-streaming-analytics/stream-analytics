@@ -1,15 +1,15 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class ModelDto {
+public class Model {
 
 	private String name;
 	private String version;
 	
-	public ModelDto() {
+	public Model() {
 		
 	}
 	
-	public ModelDto(String name, String version) {
+	public Model(String name, String version) {
 		super();
 		this.name = name;
 		this.version = version;
