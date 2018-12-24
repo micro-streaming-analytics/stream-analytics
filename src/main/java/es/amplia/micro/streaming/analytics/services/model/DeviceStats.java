@@ -1,8 +1,13 @@
 package es.amplia.micro.streaming.analytics.services.model;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+
 public class DeviceStats {
 
-	private Long deviceId;
+	@Id
+	private ObjectId _id;
+	private String deviceId;
 	private Stats temperature;
 	private Stats cpuUsage;
 	private Stats ram;
@@ -13,9 +18,10 @@ public class DeviceStats {
 
 	}
 
-	public DeviceStats(Long deviceId, Stats temperature, Stats cpuUsage, Stats ram, Stats volatilStorage,
+	public DeviceStats(ObjectId _id, String deviceId, Stats temperature, Stats cpuUsage, Stats ram, Stats volatilStorage,
 			Stats nonVolatilStorage) {
 		super();
+		this._id = _id;
 		this.deviceId = deviceId;
 		this.temperature = temperature;
 		this.cpuUsage = cpuUsage;
@@ -24,11 +30,11 @@ public class DeviceStats {
 		this.nonVolatilStorage = nonVolatilStorage;
 	}
 
-	public Long getDeviceId() {
+	public String getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(Long deviceId) {
+	public void setDeviceId(String deviceId) {
 		this.deviceId = deviceId;
 	}
 
@@ -70,5 +76,13 @@ public class DeviceStats {
 
 	public void setNonVolatilStorage(Stats nonVolatilStorage) {
 		this.nonVolatilStorage = nonVolatilStorage;
+	}
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
 	}
 }
