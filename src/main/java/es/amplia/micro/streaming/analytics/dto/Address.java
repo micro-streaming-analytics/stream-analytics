@@ -1,16 +1,16 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class AddressDto {
+public class Address {
 
 	private String type;
 	private String value;
 	private String apn;
 	
-	public AddressDto() {
+	public Address() {
 		
 	}
 	
-	public AddressDto(String type, String value, String apn) {
+	public Address(String type, String value, String apn) {
 		super();
 		this.type = type;
 		this.value = value;

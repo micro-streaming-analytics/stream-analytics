@@ -1,15 +1,15 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class ManufacturerDto {
+public class Manufacturer {
 
 	private String name;
 	private String oui;
 	
-	public ManufacturerDto() {
+	public Manufacturer() {
 		
 	}
 	
-	public ManufacturerDto(String name, String oui) {
+	public Manufacturer(String name, String oui) {
 		super();
 		this.name = name;
 		this.oui = oui;

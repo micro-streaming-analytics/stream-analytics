@@ -2,34 +2,34 @@ package es.amplia.micro.streaming.analytics.dto;
 
 import java.util.List;
 
-public class CommunicationsModuleDto {
+public class CommunicationsModule {
 
 	private Long id;
 	private String name;
 	private String type;
-	private HardwareDto hardwareDto;
+	private Hardware hardware;
 	private String operationalStatus;
 	private String antennaStatus;
-	private List<SoftwareDto>softwares;
-	private MobileDto mobileDto;
-	private SubscriberDto subscriberDto;
+	private List<Software>softwares;
+	private Mobile mobile;
+	private Subscriber subscriber;
 	
-	public CommunicationsModuleDto() {
+	public CommunicationsModule() {
 		
 	}
 	
-	public CommunicationsModuleDto(Long id, String name, String type, HardwareDto hardwareDto, String operationalStatus,
-			String antennaStatus, List<SoftwareDto> softwares, MobileDto mobileDto, SubscriberDto subscriberDto) {
+	public CommunicationsModule(Long id, String name, String type, Hardware hardware, String operationalStatus,
+			String antennaStatus, List<Software> softwares, Mobile mobile, Subscriber subscriber) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.hardwareDto = hardwareDto;
+		this.hardware = hardware;
 		this.operationalStatus = operationalStatus;
 		this.antennaStatus = antennaStatus;
 		this.softwares = softwares;
-		this.mobileDto = mobileDto;
-		this.subscriberDto = subscriberDto;
+		this.mobile = mobile;
+		this.subscriber = subscriber;
 	}
 	
 	public Long getId() {
@@ -50,11 +50,11 @@ public class CommunicationsModuleDto {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public HardwareDto getHardwareDto() {
-		return hardwareDto;
+	public Hardware getHardware() {
+		return hardware;
 	}
-	public void setHardwareDto(HardwareDto hardwareDto) {
-		this.hardwareDto = hardwareDto;
+	public void setHardware(Hardware hardware) {
+		this.hardware = hardware;
 	}
 	public String getOperationalStatus() {
 		return operationalStatus;
@@ -68,22 +68,22 @@ public class CommunicationsModuleDto {
 	public void setAntennaStatus(String antennaStatus) {
 		this.antennaStatus = antennaStatus;
 	}
-	public List<SoftwareDto> getSoftwares() {
+	public List<Software> getSoftwares() {
 		return softwares;
 	}
-	public void setSoftwares(List<SoftwareDto> softwares) {
+	public void setSoftwares(List<Software> softwares) {
 		this.softwares = softwares;
 	}
-	public MobileDto getMobileDto() {
-		return mobileDto;
+	public Mobile getMobile() {
+		return mobile;
 	}
-	public void setMobileDto(MobileDto mobileDto) {
-		this.mobileDto = mobileDto;
+	public void setMobile(Mobile mobile) {
+		this.mobile = mobile;
 	}
-	public SubscriberDto getSubscriberDto() {
-		return subscriberDto;
+	public Subscriber getSubscriber() {
+		return subscriber;
 	}
-	public void setSubscriberDto(SubscriberDto subscriberDto) {
-		this.subscriberDto = subscriberDto;
+	public void setSubscriber(Subscriber subscriber) {
+		this.subscriber = subscriber;
 	}
 }

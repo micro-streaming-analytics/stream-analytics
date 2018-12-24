@@ -4,17 +4,17 @@ public class DMMCollectionDto {
 
 	private String version;
 	private boolean trustedBoot;
-	private EventDto eventDto;
+	private Event event;
 	
 	public DMMCollectionDto() {
 		
 	}
 	
-	public DMMCollectionDto(String version, boolean trustedBoot, EventDto eventDto) {
+	public DMMCollectionDto(String version, boolean trustedBoot, Event event) {
 		super();
 		this.version = version;
 		this.trustedBoot = trustedBoot;
-		this.eventDto = eventDto;
+		this.event = event;
 	}
 	
 	public String getVersion() {
@@ -29,10 +29,10 @@ public class DMMCollectionDto {
 	public void setTrustedBoot(boolean trustedBoot) {
 		this.trustedBoot = trustedBoot;
 	}
-	public EventDto getEventDto() {
-		return eventDto;
+	public Event getEvent() {
+		return event;
 	}
-	public void setEventDto(EventDto eventDto) {
-		this.eventDto = eventDto;
+	public void setEvent(Event event) {
+		this.event = event;
 	}
 }

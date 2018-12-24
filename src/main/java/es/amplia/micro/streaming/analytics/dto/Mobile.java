@@ -1,6 +1,6 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class MobileDto {
+public class Mobile {
 
 	private String mr;
 	private String apn;
@@ -18,11 +18,11 @@ public class MobileDto {
 	private String signalQualityMax;
 	private String signalQualityMin;
 	
-	public MobileDto() {
+	public Mobile() {
 		
 	}
 	
-	public MobileDto(String mr, String apn, String bcch, String cgi, String cellId, String lac, String ratType,
+	public Mobile(String mr, String apn, String bcch, String cgi, String cellId, String lac, String ratType,
 			String plmn, String timingAdvance, String signalStrength, String signalStrengthMax,
 			String signalStrengthMin, String signalQuality, String signalQualityMax, String signalQualityMin) {
 		super();

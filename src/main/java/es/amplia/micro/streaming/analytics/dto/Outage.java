@@ -1,15 +1,15 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class OutageDto {
+public class Outage {
 
 	private String timestamp;
 	private String duration;
 	
-	public OutageDto() {
+	public Outage() {
 		
 	}
 	
-	public OutageDto(String timestamp, String duration) {
+	public Outage(String timestamp, String duration) {
 		super();
 		this.timestamp = timestamp;
 		this.duration = duration;

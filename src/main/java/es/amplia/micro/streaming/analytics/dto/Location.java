@@ -1,15 +1,15 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class LocationDto {
+public class Location {
 
 	private String timestamp;
 	private String coordenates;
 	
-	public LocationDto() {
+	public Location() {
 		
 	}
 	
-	public LocationDto(String timestamp, String coordenates) {
+	public Location(String timestamp, String coordenates) {
 		super();
 		this.timestamp = timestamp;
 		this.coordenates = coordenates;
