@@ -9,14 +9,13 @@ public class Stats {
 	private Double quartiles;
 	private Double max;
 	private Double min;
-	private String registryDate;
 	
 	public Stats() {
 		
 	}
 	
 	public Stats(Double average, Double median, Double trend, Double typicalDeviation, Double quartiles, Double max,
-			Double min, String registryDate) {
+			Double min) {
 		super();
 		this.average = average;
 		this.median = median;
@@ -25,7 +24,6 @@ public class Stats {
 		this.quartiles = quartiles;
 		this.max = max;
 		this.min = min;
-		this.registryDate = registryDate;
 	}
 	
 	public Double getAverage() {
@@ -69,13 +67,5 @@ public class Stats {
 	}
 	public void setMin(Double min) {
 		this.min = min;
-	}
-
-	public String getRegistryDate() {
-		return registryDate;
-	}
-
-	public void setRegistryDate(String registryDate) {
-		this.registryDate = registryDate;
 	}
 }
