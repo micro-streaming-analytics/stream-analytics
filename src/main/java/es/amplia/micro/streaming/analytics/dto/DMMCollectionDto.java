@@ -35,4 +35,17 @@ public class DMMCollectionDto {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("DMMCollectionDto [version=");
+		builder.append(version);
+		builder.append(", trustedBoot=");
+		builder.append(trustedBoot);
+		builder.append(", event=");
+		builder.append(event);
+		builder.append("]");
+		return builder.toString();
+	}
 }

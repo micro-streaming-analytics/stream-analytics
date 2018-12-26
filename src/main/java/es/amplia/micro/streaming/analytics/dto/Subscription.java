@@ -1,30 +1,30 @@
 package es.amplia.micro.streaming.analytics.dto;
 
-public class Subscriber {
+public class Subscription {
 
 	private String id;
 	private String name;
-	private String type;
 	private String description;
 	private String operator;
 	private String imsi;
 	private String msisdn;
+	private String type;
 	private Address address;
 	
-	public Subscriber() {
+	public Subscription() {
 		
 	}
 	
-	public Subscriber(String id, String name, String type, String description, String operator, String imsi,
-			String msisdn, Address address) {
+	public Subscription(String id, String name, String description, String operator, String imsi, String msisdn,
+			String type, Address address) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.type = type;
 		this.description = description;
 		this.operator = operator;
 		this.imsi = imsi;
 		this.msisdn = msisdn;
+		this.type = type;
 		this.address = address;
 	}
 	
@@ -39,12 +39,6 @@ public class Subscriber {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 	public String getDescription() {
 		return description;
@@ -70,10 +64,17 @@ public class Subscriber {
 	public void setMsisdn(String msisdn) {
 		this.msisdn = msisdn;
 	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public Address getAddress() {
 		return address;
 	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
 }

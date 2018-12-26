@@ -3,17 +3,17 @@ public class NonVolatilStorage {
 
 	private String unit;
 	private String total;
-	private Usage nonUolatilStorageUse;
+	private Usage usage;
 	
 	public NonVolatilStorage() {
 		
 	}
 	
-	public NonVolatilStorage(String unit, String total, Usage nonUolatilStorageUse) {
+	public NonVolatilStorage(String unit, String total, Usage usage) {
 		super();
 		this.unit = unit;
 		this.total = total;
-		this.nonUolatilStorageUse = nonUolatilStorageUse;
+		this.usage = usage;
 	}
 	
 	public String getUnit() {
@@ -28,10 +28,10 @@ public class NonVolatilStorage {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	public Usage getVolatilStorageUse() {
-		return nonUolatilStorageUse;
+	public Usage getUsage() {
+		return usage;
 	}
-	public void setVolatilStorageUse(Usage nonUolatilStorageUse) {
-		this.nonUolatilStorageUse = nonUolatilStorageUse;
+	public void setUsage(Usage usage) {
+		this.usage = usage;
 	}
 }

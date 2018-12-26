@@ -4,17 +4,17 @@ public class Ram {
 
 	private String unit;
 	private String total;
-	private Usage ramUsage;
+	private Usage usage;
 	
 	public Ram() {
 		
 	}
 	
-	public Ram(String unit, String total, Usage ramUsage) {
+	public Ram(String unit, String total, Usage usage) {
 		super();
 		this.unit = unit;
 		this.total = total;
-		this.ramUsage = ramUsage;
+		this.usage = usage;
 	}
 	
 	public String getUnit() {
@@ -29,10 +29,10 @@ public class Ram {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	public Usage getRamUsage() {
-		return ramUsage;
+	public Usage getUsage() {
+		return usage;
 	}
-	public void setUsage(Usage ramUsage) {
-		this.ramUsage = ramUsage;
+	public void setUsage(Usage usage) {
+		this.usage = usage;
 	}
 }

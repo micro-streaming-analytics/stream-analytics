@@ -4,22 +4,24 @@ import java.util.List;
 
 public class CommunicationsModule {
 
-	private Long id;
+	private String id;
 	private String name;
 	private String type;
 	private Hardware hardware;
 	private String operationalStatus;
 	private String antennaStatus;
-	private List<Software>softwares;
+	private List<Software> sofwareList;
 	private Mobile mobile;
 	private Subscriber subscriber;
+	private Subscription subscription;
 	
 	public CommunicationsModule() {
 		
 	}
 	
-	public CommunicationsModule(Long id, String name, String type, Hardware hardware, String operationalStatus,
-			String antennaStatus, List<Software> softwares, Mobile mobile, Subscriber subscriber) {
+	public CommunicationsModule(String id, String name, String type, Hardware hardware, String operationalStatus,
+			String antennaStatus, List<Software> sofwareList, Mobile mobile, Subscriber subscriber,
+			Subscription subscription) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -27,15 +29,16 @@ public class CommunicationsModule {
 		this.hardware = hardware;
 		this.operationalStatus = operationalStatus;
 		this.antennaStatus = antennaStatus;
-		this.softwares = softwares;
+		this.sofwareList = sofwareList;
 		this.mobile = mobile;
 		this.subscriber = subscriber;
+		this.subscription = subscription;
 	}
 	
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -68,11 +71,11 @@ public class CommunicationsModule {
 	public void setAntennaStatus(String antennaStatus) {
 		this.antennaStatus = antennaStatus;
 	}
-	public List<Software> getSoftwares() {
-		return softwares;
+	public List<Software> getSoftwareList() {
+		return sofwareList;
 	}
-	public void setSoftwares(List<Software> softwares) {
-		this.softwares = softwares;
+	public void setSoftwareList(List<Software> sofwareList) {
+		this.sofwareList = sofwareList;
 	}
 	public Mobile getMobile() {
 		return mobile;
@@ -85,5 +88,13 @@ public class CommunicationsModule {
 	}
 	public void setSubscriber(Subscriber subscriber) {
 		this.subscriber = subscriber;
+	}
+
+	public Subscription getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
 	}
 }
