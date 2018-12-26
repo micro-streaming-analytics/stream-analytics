@@ -1,11 +1,9 @@
 package es.amplia.micro.streaming.analytics.services.dao;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 
-import es.amplia.micro.streaming.analytics.dto.DMMCollectionDto;
+import es.amplia.micro.streaming.analytics.dto.Device;
 
-@Repository
-public interface DMMCollectionRepository extends MongoRepository<DMMCollectionDto, String> {
+public interface DeviceRepository extends MongoRepository<Device, String>,  DeviceRepositoryCustom{
 
 }
