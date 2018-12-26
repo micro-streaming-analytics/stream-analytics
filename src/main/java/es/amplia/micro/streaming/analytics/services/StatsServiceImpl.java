@@ -20,7 +20,6 @@ public class StatsServiceImpl implements StatsService {
 		stats.setQuartiles(getQuartiles(list));
 		stats.setMax(getMax(list));
 		stats.setMin(getMin(list));
-		stats.setRegistryDate("");
 		return stats;
 	}
 	
