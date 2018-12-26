@@ -1,23 +1,24 @@
 package es.amplia.micro.streaming.analytics.services;
 
-import java.util.stream.DoubleStream;
+import java.util.List;
+
 import es.amplia.micro.streaming.analytics.services.model.Stats;
 
 public interface StatsService {
 	
-	Stats buildStats(DoubleStream doubleStream);
+	Stats buildStats(final List<String> stream);
 	
-	Double getAverage(DoubleStream doubleStream);
+	Double getAverage(final List<String> stream);
 	
-	Double getMedian(DoubleStream doubleStream);
+	Double getMedian(final List<String> stream);
 	
-	Double getTrend(final DoubleStream doubleStream);
+	Double getTrend(final List<String> stream);
 	
-	Double getTypicalDeviation(DoubleStream doubleStream);
+	Double getTypicalDeviation(final List<String> stream);
 	
-	Double getQuartiles(DoubleStream doubleStream);
+	Double getQuartiles(final List<String> stream);
 	
-	Double getMax(final DoubleStream doubleStream);
+	Double getMax(final List<String> stream);
 	
-	Double getMin(final DoubleStream doubleStream);
+	Double getMin(final List<String> stream);
 }
