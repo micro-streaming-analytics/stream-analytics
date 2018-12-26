@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import static es.amplia.micro.streaming.analytics.utils.Constants.*;
 import es.amplia.micro.streaming.analytics.dto.Device;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class DeviceRepositoryCustomImpl implements DeviceRepositoryCustom{
 	public List<Device> findDevicesById(String id) {
 		final Query query = new Query();
 		final List<Criteria> criterias = new ArrayList<>();
-		criterias.add(Criteria.where("id").is(id));
+		criterias.add(Criteria.where(_ID).is(id));
 		query.addCriteria(new Criteria().andOperator(criterias.toArray(new Criteria[criterias.size()])));
 		return mongoTemplate.find(query, Device.class);
 	}
