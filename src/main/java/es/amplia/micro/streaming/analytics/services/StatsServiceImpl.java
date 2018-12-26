@@ -4,10 +4,7 @@ import java.util.List;
 import java.util.stream.DoubleStream;
 
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
-import es.amplia.micro.streaming.analytics.dto.Device;
-import es.amplia.micro.streaming.analytics.dto.Temperature;
 import es.amplia.micro.streaming.analytics.services.model.Stats;
 
 @Service
@@ -19,7 +16,7 @@ public class StatsServiceImpl implements StatsService {
 		stats.setAverage(getAverage(list));
 		stats.setMedian(getMedian(list));
 		stats.setTrend(getTrend(list));
-		stats.setTypicalDeviation(getTypicalDeviation(list));
+		stats.setTypicalDeviation(getStandardDeviation(list));
 		stats.setQuartiles(getQuartiles(list));
 		stats.setMax(getMax(list));
 		stats.setMin(getMin(list));
@@ -46,13 +43,12 @@ public class StatsServiceImpl implements StatsService {
 	}
 	
 	@Override
-	public Double getTypicalDeviation(final List<String> list) {
-		return null;
+	public Double getStandardDeviation(final List<String> list) {
+		return Math.sqrt(getVariance(list));
 	}
 	
 	@Override
 	public Double getQuartiles(final List<String> list) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -66,10 +62,12 @@ public class StatsServiceImpl implements StatsService {
 		return list.stream().mapToDouble(Double::new).min().orElse(Double.NaN);
 	}
 
-	private Double getRelativeFrequency(final String elemento, List<Device> devices) {
-		return CollectionUtils.isEmpty(devices) ? 0.00 :
-			(double) (devices.stream().map(Device::getTemperature)
-			.map(Temperature::getCurrent)
-			.filter(elemento::equals).count()/devices.size());
+	private double getVariance(final List<String> list) {
+		double average = getAverage(list);
+		double temp = 0;
+		for(String a: list) {
+			temp += Math.pow(Double.parseDouble(a) - average, 3);
+		}
+		return temp/list.size();
 	}
 }

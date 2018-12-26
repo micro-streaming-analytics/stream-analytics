@@ -14,7 +14,7 @@ public interface StatsService {
 	
 	Double getTrend(final List<String> stream);
 	
-	Double getTypicalDeviation(final List<String> stream);
+	Double getStandardDeviation(final List<String> stream);
 	
 	Double getQuartiles(final List<String> stream);
 	
