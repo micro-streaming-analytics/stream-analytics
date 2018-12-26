@@ -5,8 +5,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import static es.amplia.micro.streaming.analytics.utils.Constants.*;
 
-import es.amplia.micro.streaming.analytics.dto.DMMCollectionDto;
-
 @Service
 public class RabbitMessageSenderImpl implements RabbitMessageSender {
 
@@ -17,9 +15,9 @@ public class RabbitMessageSenderImpl implements RabbitMessageSender {
 	}
 	
 	@Override
-	@Scheduled(fixedDelay=5000L)
-	public void sendMessage(final DMMCollectionDto collection) {
-		rabbitTemplate.convertAndSend(DEVICEINFO_EXCHANGES, EMPTY, collection.toString());
+	@Scheduled(fixedDelay=3000L)
+	public void sendMessage(final String jsonCollection) {
+		rabbitTemplate.convertAndSend(DEVICEINFO_EXCHANGES, EMPTY, jsonCollection);
 	}
 
 }
