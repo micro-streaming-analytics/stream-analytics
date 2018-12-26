@@ -9,7 +9,7 @@ public interface ManageDeviceService {
 
 	void saveDMMCollection(DMMCollectionDto collection);
 	
-	DeviceStats manageDeviceService(final List<Device> devices);
+	DeviceStats manageDeviceService(List<Device> devices, String id);
 
 	DeviceStats computeStatistics(String id);
 }

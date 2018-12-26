@@ -36,9 +36,9 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 	}
 	
 	@Override
-	public DeviceStats manageDeviceService(List<Device> devices) {
+	public DeviceStats manageDeviceService(final List<Device> devices, final String id) {
 		final DeviceStats deviceStats = new DeviceStats();
-		deviceStats.setDeviceId(devices.get(0).getId());
+		deviceStats.setDeviceId(id);
 		deviceStats.setTemperature(computeStatsTemperature(devices));
 		deviceStats.setCpuUsage(computeStatsCpuUsage(devices));
 		deviceStats.setRam(computeStatsRam(devices));
@@ -49,7 +49,7 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 	
 	@Override
 	public DeviceStats computeStatistics(String id) {
-		return manageDeviceService(deviceRepository.findDevicesById(id));
+		return manageDeviceService(deviceRepository.findDevicesById(id), id);
 	}
 	
 	private Stats computeStatsTemperature(final List<Device> devices) {
