@@ -1,16 +1,19 @@
 package es.amplia.micro.streaming.analytics.services;
 
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import es.amplia.micro.streaming.analytics.dto.DMMCollectionDto;
 import es.amplia.micro.streaming.analytics.dto.Device;
-import es.amplia.micro.streaming.analytics.dto.Event;
+import es.amplia.micro.streaming.analytics.dto.NonVolatilStorage;
+import es.amplia.micro.streaming.analytics.dto.Ram;
 import es.amplia.micro.streaming.analytics.dto.Temperature;
 import es.amplia.micro.streaming.analytics.dto.Usage;
-import es.amplia.micro.streaming.analytics.services.dao.DMMCollectionRepository;
+import es.amplia.micro.streaming.analytics.dto.VolatilStorage;
+import es.amplia.micro.streaming.analytics.services.dao.DeviceRepository;
 import es.amplia.micro.streaming.analytics.services.dao.DeviceStatsRepository;
 import es.amplia.micro.streaming.analytics.services.model.DeviceStats;
 import es.amplia.micro.streaming.analytics.services.model.Stats;
@@ -22,58 +25,53 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 	StatsService statsService;
 	
 	@Autowired
-	DMMCollectionRepository dMMCollectionRepository;
+	DeviceRepository deviceRepository;
 	
 	@Autowired
 	DeviceStatsRepository deviceStatsRepository;
 	
 	@Override
 	public void saveDMMCollection(DMMCollectionDto collection) {
-		dMMCollectionRepository.save(collection);
+		deviceRepository.save(collection.getEvent().getDevice());
 	}
 	
 	@Override
-	public DeviceStats manageDeviceService(Stream<Device> devices) {
+	public DeviceStats manageDeviceService(List<Device> devices) {
 		final DeviceStats deviceStats = new DeviceStats();
+		deviceStats.setDeviceId(devices.get(0).getId());
 		deviceStats.setTemperature(computeStatsTemperature(devices));
 		deviceStats.setCpuUsage(computeStatsCpuUsage(devices));
-//		deviceStats.setRam(computeStatsRam(ram));
-//		deviceStats.setVolatilStorage(computeStatsVolatilStorage(volatilStorage));
-//		deviceStats.setNonVolatilStorage(computeStatsNonVolatilStorage(nonVolatilStorage));
+		deviceStats.setRam(computeStatsRam(devices));
+		deviceStats.setVolatilStorage(computeStatsVolatilStorage(devices));
+		deviceStats.setNonVolatilStorage(computeStatsNonVolatilStorage(devices));
 		return persistDeviceStats(deviceStats);
 	}
 	
 	@Override
 	public DeviceStats computeStatistics(String id) {
-		return manageDeviceService(findDevicesById(id));
+		return manageDeviceService(deviceRepository.findDevicesById(id));
 	}
 	
-	private Stream<Device> findDevicesById(String id){
-		return dMMCollectionRepository.findAll().stream()
-				.map(DMMCollectionDto::getEvent)
-					.map(Event::getDevice).filter(id::equals);
+	private Stats computeStatsTemperature(final List<Device> devices) {
+		return statsService.buildStats(devices.stream().map(Device::getTemperature)
+				.map(Temperature::getCurrent).collect(Collectors.toList()));
 	}
-		
-	private Stats computeStatsTemperature(final Stream<Device> devices) {
-		return statsService.buildStats(devices.map(Device::getTemperature)
-				.map(Temperature::getCurrent).mapToDouble(Double::new));
+	private Stats computeStatsCpuUsage(final List<Device> devices) {
+		return statsService.buildStats(devices.stream().map(Device::getCpuUsage)
+				.map(Usage::getCurrent).collect(Collectors.toList()));
 	}
-	private Stats computeStatsCpuUsage(final Stream<Device> devices) {
-		return statsService.buildStats(devices.map(Device::getCpuUsage)
-				.map(Usage::getCurrent).mapToDouble(Double::new));
+	private Stats computeStatsRam(final List<Device> devices) {
+		return statsService.buildStats(devices.stream().map(Device::getRam)
+				.map(Ram::getUsage).map(Usage::getCurrent).collect(Collectors.toList()));
 	}
-//	private Stats computeStatsRam(final Stream<Device> devices) {
-//		return statsService.buildStats(devices.map(Device::getRam)
-//				.map(Usage::getCurrent).mapToDouble(Double::new));
-//	}
-//	private Stats computeStatsVolatilStorage(final Stream<Device> devices) {
-//		return statsService.buildStats(devices.map(Device::getVolatilStorage)
-//				.map(Usage::getCurrent).mapToDouble(Double::new));
-//	}
-//	private Stats computeStatsNonVolatilStorage(final Stream<Device> devices) {
-//		return statsService.buildStats(devices.map(Device::getTemperature)
-//				.map(Temperature::getCurrent).mapToDouble(Double::new));
-//	}
+	private Stats computeStatsVolatilStorage(final List<Device> devices) {
+		return statsService.buildStats(devices.stream().map(Device::getVolatilStorage)
+				.map(VolatilStorage::getUsage).map(Usage::getCurrent).collect(Collectors.toList()));
+	}
+	private Stats computeStatsNonVolatilStorage(final List<Device> devices) {
+		return statsService.buildStats(devices.stream().map(Device::getNonVolatilStorage)
+				.map(NonVolatilStorage::getUsage).map(Usage::getCurrent).collect(Collectors.toList()));
+	}
 	private DeviceStats persistDeviceStats(final DeviceStats deviceStats) {
 		return deviceStatsRepository.save(deviceStats);
 	}
