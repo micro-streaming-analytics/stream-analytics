@@ -2,15 +2,22 @@ package es.amplia.micro.streaming.analytics.dto;
 
 import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection="dmmCollectionDto")
 public class Device {
 
+	@Id
+	private ObjectId deviceId;
 	private String id;
-	private String path;
+	private List<String> path;
 	private String name;
 	private String description;
 	private Hardware hardware;
 	private String operationalStatus;
-	private List<Software> softwares;
+	private List<Software> softwareList;
 	private Location location;
 	private Temperature temperature;
 	private Usage cpuUsage;
@@ -24,8 +31,8 @@ public class Device {
 		
 	}
 	
-	public Device(String id, String path, String name, String description, Hardware hardware,
-			String operationalStatus, List<Software> softwares, Location location,
+	public Device(String id, List<String> path, String name, String description, Hardware hardware,
+			String operationalStatus, List<Software> softwareList, Location location,
 			Temperature temperature, Usage cpuUsage, Ram ram, VolatilStorage volatilStorage,
 			NonVolatilStorage nonVolatilStorage, PowerSupply powerSupply,
 			List<CommunicationsModule> communicationsModules) {
@@ -36,7 +43,7 @@ public class Device {
 		this.description = description;
 		this.hardware = hardware;
 		this.operationalStatus = operationalStatus;
-		this.softwares = softwares;
+		this.softwareList = softwareList;
 		this.location = location;
 		this.temperature = temperature;
 		this.cpuUsage = cpuUsage;
@@ -53,10 +60,10 @@ public class Device {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPath() {
+	public List<String> getPath() {
 		return path;
 	}
-	public void setPath(String path) {
+	public void setPath(List<String> path) {
 		this.path = path;
 	}
 	public String getName() {
@@ -83,11 +90,11 @@ public class Device {
 	public void setOperationalStatus(String operationalStatus) {
 		this.operationalStatus = operationalStatus;
 	}
-	public List<Software> getSoftwares() {
-		return softwares;
+	public List<Software> getSoftwareList() {
+		return softwareList;
 	}
-	public void setSoftwares(List<Software> softwares) {
-		this.softwares = softwares;
+	public void setSoftwareList(List<Software> softwareList) {
+		this.softwareList = softwareList;
 	}
 	public Location getLocation() {
 		return location;
@@ -137,6 +144,10 @@ public class Device {
 	public void setCommunicationsModules(List<CommunicationsModule> communicationsModules) {
 		this.communicationsModules = communicationsModules;
 	}
-	
-	
+	public ObjectId getDeviceId() {
+		return deviceId;
+	}
+	public void setDeviceId(ObjectId deviceId) {
+		this.deviceId = deviceId;
+	}
 }

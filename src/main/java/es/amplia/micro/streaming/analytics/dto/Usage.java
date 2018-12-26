@@ -4,15 +4,15 @@ public class Usage {
 
 	private String unit;
 	private String current;
-	private Double average;
-	private Double maximum;
-	private Double minimum;
+	private String average;
+	private String maximum;
+	private String minimum;
 	
 	public Usage() {
 		
 	}
 	
-	public Usage(String unit, String current, Double average, Double maximum, Double minimum) {
+	public Usage(String unit, String current, String average, String maximum, String minimum) {
 		super();
 		this.unit = unit;
 		this.current = current;
@@ -33,22 +33,22 @@ public class Usage {
 	public void setCurrent(String current) {
 		this.current = current;
 	}
-	public Double getAverage() {
+	public String getAverage() {
 		return average;
 	}
-	public void setAverage(Double average) {
+	public void setAverage(String average) {
 		this.average = average;
 	}
-	public Double getMaximum() {
+	public String getMaximum() {
 		return maximum;
 	}
-	public void setMaximum(Double maximum) {
+	public void setMaximum(String maximum) {
 		this.maximum = maximum;
 	}
-	public Double getMinimum() {
+	public String getMinimum() {
 		return minimum;
 	}
-	public void setMinimum(Double minimum) {
+	public void setMinimum(String minimum) {
 		this.minimum = minimum;
 	}
 }
