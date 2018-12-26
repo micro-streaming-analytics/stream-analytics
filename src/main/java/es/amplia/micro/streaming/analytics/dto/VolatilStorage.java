@@ -4,17 +4,17 @@ public class VolatilStorage {
 
 	private String unit;
 	private String total;
-	private Usage volatilStorageUse;
+	private Usage usage;
 	
 	public VolatilStorage() {
 		
 	}
 	
-	public VolatilStorage(String unit, String total, Usage volatilStorageUse) {
+	public VolatilStorage(String unit, String total, Usage usage) {
 		super();
 		this.unit = unit;
 		this.total = total;
-		this.volatilStorageUse = volatilStorageUse;
+		this.usage = usage;
 	}
 	
 	public String getUnit() {
@@ -29,10 +29,10 @@ public class VolatilStorage {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	public Usage getVolatilStorageUse() {
-		return volatilStorageUse;
+	public Usage getUsage() {
+		return usage;
 	}
-	public void setVolatilStorageUse(Usage volatilStorageUse) {
-		this.volatilStorageUse = volatilStorageUse;
+	public void setUsage(Usage usage) {
+		this.usage = usage;
 	}
 }

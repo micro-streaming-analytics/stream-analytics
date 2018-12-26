@@ -2,7 +2,7 @@ package es.amplia.micro.streaming.analytics.dto;
 
 public class Hardware {
 
-	private String serialNumber;
+	private String serialnumber;
 	private Manufacturer manufacturer;
 	private Model model;
 	private String clockDate;
@@ -12,20 +12,20 @@ public class Hardware {
 		
 	}
 	
-	public Hardware(String serialNumber, Manufacturer manufacturer, Model model, String clockDate,
+	public Hardware(String serialnumber, Manufacturer manufacturer, Model model, String clockDate,
 			String upTime) {
 		super();
-		this.serialNumber = serialNumber;
+		this.serialnumber = serialnumber;
 		this.manufacturer = manufacturer;
 		this.model = model;
 		this.clockDate = clockDate;
 		this.upTime = upTime;
 	}
-	public String getSerialNumber() {
-		return serialNumber;
+	public String getSerialnumber() {
+		return serialnumber;
 	}
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
+	public void setSerialnumber(String serialnumber) {
+		this.serialnumber = serialnumber;
 	}
 	public Manufacturer getManufacturer() {
 		return manufacturer;

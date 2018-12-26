@@ -2,7 +2,9 @@ package es.amplia.micro.streaming.analytics.services.model;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection="deviceStats")
 public class DeviceStats {
 
 	@Id
@@ -18,10 +20,9 @@ public class DeviceStats {
 
 	}
 
-	public DeviceStats(ObjectId _id, String deviceId, Stats temperature, Stats cpuUsage, Stats ram, Stats volatilStorage,
+	public DeviceStats(String deviceId, Stats temperature, Stats cpuUsage, Stats ram, Stats volatilStorage,
 			Stats nonVolatilStorage) {
 		super();
-		this._id = _id;
 		this.deviceId = deviceId;
 		this.temperature = temperature;
 		this.cpuUsage = cpuUsage;

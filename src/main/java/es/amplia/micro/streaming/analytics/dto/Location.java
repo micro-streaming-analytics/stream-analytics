@@ -3,16 +3,16 @@ package es.amplia.micro.streaming.analytics.dto;
 public class Location {
 
 	private String timestamp;
-	private String coordenates;
+	private Coordinates coordinates;
 	
 	public Location() {
 		
 	}
 	
-	public Location(String timestamp, String coordenates) {
+	public Location(String timestamp, Coordinates coordinates) {
 		super();
 		this.timestamp = timestamp;
-		this.coordenates = coordenates;
+		this.coordinates = coordinates;
 	}
 	
 	public String getTimestamp() {
@@ -21,11 +21,11 @@ public class Location {
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
 	}
-	public String getCoordenates() {
-		return coordenates;
+	public Coordinates getCoordinates() {
+		return coordinates;
 	}
-	public void setCoordenates(String coordenates) {
-		this.coordenates = coordenates;
+	public void setCoordinates(Coordinates coordinates) {
+		this.coordinates = coordinates;
 	}
 	
 	
