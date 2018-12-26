@@ -7,7 +7,7 @@ import es.amplia.micro.streaming.analytics.services.model.DeviceStats;
 
 public interface ManageDeviceService {
 
-	void saveDMMCollection(DMMCollectionDto collection);
+	void saveDeviceDto(DMMCollectionDto collection);
 	
 	DeviceStats manageDeviceService(List<Device> devices, String id);
 

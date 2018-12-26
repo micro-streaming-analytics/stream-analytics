@@ -31,7 +31,7 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 	DeviceStatsRepository deviceStatsRepository;
 	
 	@Override
-	public void saveDMMCollection(DMMCollectionDto collection) {
+	public void saveDeviceDto(DMMCollectionDto collection) {
 		deviceRepository.save(collection.getEvent().getDevice());
 	}
 	
