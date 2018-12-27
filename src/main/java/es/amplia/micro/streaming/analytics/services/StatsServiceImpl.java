@@ -85,7 +85,7 @@ public class StatsServiceImpl implements StatsService {
 		double average = getAverage(list);
 		double temp = 0;
 		for (String a : list) {
-			temp += Math.pow(Double.parseDouble(a) - average, 3);
+			temp += Math.pow(Double.parseDouble(a) - average, 2);
 		}
 		return temp / list.size();
 	}
