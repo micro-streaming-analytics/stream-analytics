@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import es.amplia.micro.streaming.analytics.dto.DMMCollectionDto;
 import es.amplia.micro.streaming.analytics.dto.Device;
@@ -31,12 +32,23 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 	DeviceStatsRepository deviceStatsRepository;
 	
 	@Override
-	public void saveDMMCollection(DMMCollectionDto collection) {
+	public void saveDeviceDto(DMMCollectionDto collection) {
 		deviceRepository.save(collection.getEvent().getDevice());
 	}
 	
 	@Override
 	public DeviceStats manageDeviceService(final List<Device> devices, final String id) {
+		return CollectionUtils.isEmpty(devices) ?
+				new DeviceStats() :
+					buildDeviceStats(devices, id);
+	}
+	
+	@Override
+	public DeviceStats computeStatistics(String id) {
+		return manageDeviceService(deviceRepository.findDevicesById(id), id);
+	}
+	
+	private DeviceStats buildDeviceStats(List<Device> devices, String id) {
 		final DeviceStats deviceStats = new DeviceStats();
 		deviceStats.setDeviceId(id);
 		deviceStats.setTemperature(computeStatsTemperature(devices));
@@ -45,11 +57,6 @@ public class ManageDeviceServiceImpl implements ManageDeviceService {
 		deviceStats.setVolatilStorage(computeStatsVolatilStorage(devices));
 		deviceStats.setNonVolatilStorage(computeStatsNonVolatilStorage(devices));
 		return persistDeviceStats(deviceStats);
-	}
-	
-	@Override
-	public DeviceStats computeStatistics(String id) {
-		return manageDeviceService(deviceRepository.findDevicesById(id), id);
 	}
 	
 	private Stats computeStatsTemperature(final List<Device> devices) {

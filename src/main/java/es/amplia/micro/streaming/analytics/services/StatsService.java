@@ -1,6 +1,7 @@
 package es.amplia.micro.streaming.analytics.services;
 
 import java.util.List;
+import java.util.Map;
 
 import es.amplia.micro.streaming.analytics.services.model.Stats;
 
@@ -16,7 +17,7 @@ public interface StatsService {
 	
 	Double getStandardDeviation(final List<String> stream);
 	
-	Double getQuartiles(final List<String> stream);
+	Map<Integer, Double> getQuartiles(final List<String> stream);
 	
 	Double getMax(final List<String> stream);
 	

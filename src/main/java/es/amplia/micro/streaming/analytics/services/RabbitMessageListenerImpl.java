@@ -27,7 +27,7 @@ public class RabbitMessageListenerImpl implements RabbitMessageListener {
 	public void listenMessages(final String jsonCollection) throws JsonParseException, JsonMappingException, IOException {
 		DMMCollectionDto collection = mapJsonToDMMCollection(jsonCollection, DMMCollectionDto.class);
 		if(collectionIsValid(collection)) {
-			manageDeviceService.saveDMMCollection(collection);
+			manageDeviceService.saveDeviceDto(collection);
 			manageDeviceService.computeStatistics(collection.getEvent().getDevice().getId());
 		}
 	}

@@ -1,22 +1,23 @@
 package es.amplia.micro.streaming.analytics.services.model;
 
+import java.util.Map;
+
 public class Stats {
 
 	private Double average;
 	private Double median;
 	private Double trend;
 	private Double typicalDeviation;
-	private Double quartiles;
+	private Map<Integer, Double> quartiles;
 	private Double max;
 	private Double min;
-	private String registryDate;
 	
 	public Stats() {
 		
 	}
 	
-	public Stats(Double average, Double median, Double trend, Double typicalDeviation, Double quartiles, Double max,
-			Double min, String registryDate) {
+	public Stats(Double average, Double median, Double trend, Double typicalDeviation, Map<Integer, Double> quartiles, Double max,
+			Double min) {
 		super();
 		this.average = average;
 		this.median = median;
@@ -25,7 +26,6 @@ public class Stats {
 		this.quartiles = quartiles;
 		this.max = max;
 		this.min = min;
-		this.registryDate = registryDate;
 	}
 	
 	public Double getAverage() {
@@ -52,10 +52,10 @@ public class Stats {
 	public void setTypicalDeviation(Double typicalDeviation) {
 		this.typicalDeviation = typicalDeviation;
 	}
-	public Double getQuartiles() {
+	public Map<Integer, Double> getQuartiles() {
 		return quartiles;
 	}
-	public void setQuartiles(Double quartiles) {
+	public void setQuartiles(Map<Integer, Double> quartiles) {
 		this.quartiles = quartiles;
 	}
 	public Double getMax() {
@@ -69,13 +69,5 @@ public class Stats {
 	}
 	public void setMin(Double min) {
 		this.min = min;
-	}
-
-	public String getRegistryDate() {
-		return registryDate;
-	}
-
-	public void setRegistryDate(String registryDate) {
-		this.registryDate = registryDate;
 	}
 }
