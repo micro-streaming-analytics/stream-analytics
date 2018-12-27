@@ -13,4 +13,6 @@ public final class Constants {
 	public static final String _ID = "id";
 	public static final String COMPUTE_STATISTICS_ID = "computeStatistics/{id}";
 	public static final String SEND_JSON_TO_RABBIT = "/sendJsonToRabbit";
+	public static final String DEVICE_DTO = "deviceDto";
+	public static final String DEVICE_STATS = "deviceStats";
 }

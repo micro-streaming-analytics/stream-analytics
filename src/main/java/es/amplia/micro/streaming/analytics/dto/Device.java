@@ -2,11 +2,12 @@ package es.amplia.micro.streaming.analytics.dto;
 
 import java.util.List;
 
+import static es.amplia.micro.streaming.analytics.utils.Constants.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="deviceDto")
+@Document(collection=DEVICE_DTO)
 public class Device {
 
 	@Id

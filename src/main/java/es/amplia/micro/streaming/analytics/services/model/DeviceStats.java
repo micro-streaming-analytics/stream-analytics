@@ -1,10 +1,11 @@
 package es.amplia.micro.streaming.analytics.services.model;
 
+import static es.amplia.micro.streaming.analytics.utils.Constants.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="deviceStats")
+@Document(collection=DEVICE_STATS)
 public class DeviceStats {
 
 	@Id
