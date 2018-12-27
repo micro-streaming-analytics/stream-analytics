@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-alpine
+    hostname: rabbitmq
+    ports: 
+      - 15672
+      
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
