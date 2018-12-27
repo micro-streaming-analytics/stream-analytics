@@ -1,9 +1,16 @@
 package es.amplia.micro.streaming.analytics.services;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
+
+import com.google.common.math.Quantiles;
+
 import static org.springframework.util.CollectionUtils.*;
 
 import es.amplia.micro.streaming.analytics.services.model.Stats;
@@ -36,7 +43,7 @@ public class StatsServiceImpl implements StatsService {
 
 	@Override
 	public Double getTrend(final List<String> list) {
-		return null;
+		return isEmpty(list) ? Double.NaN : getTrendIfListNotNull(list);
 	}
 
 	@Override
@@ -45,8 +52,8 @@ public class StatsServiceImpl implements StatsService {
 	}
 
 	@Override
-	public Double getQuartiles(final List<String> list) {
-		return null;
+	public Map<Integer, Double> getQuartiles(final List<String> list) {
+		return isEmpty(list) ? new HashMap<>() : getQuartilesIfListNotNull(list);
 	}
 
 	@Override
@@ -64,6 +71,11 @@ public class StatsServiceImpl implements StatsService {
 		return list.size() % 2 == 0 ? sortedList.skip(list.size() / 2 - 1).limit(2).average().getAsDouble()
 				: sortedList.skip(list.size() / 2).findFirst().getAsDouble();
 	}
+	
+	private Double getTrendIfListNotNull(List<String> list) {
+		return Double.parseDouble(list.stream().map(e -> Pair.of(e, getRelativeFrequency(e, list))).max((o1, o2) -> 
+			o1.getSecond() > o2.getSecond() ? 1 : o1.getSecond() == o2.getSecond() ? 0: -1).orElse(Pair.of("NaN", 0.0)).getFirst());
+	}
 
 	private double getVariance(final List<String> list) {
 		return isEmpty(list) ? Double.NaN : getVarianceIfListNotNull(list);
@@ -76,5 +88,15 @@ public class StatsServiceImpl implements StatsService {
 			temp += Math.pow(Double.parseDouble(a) - average, 3);
 		}
 		return temp / list.size();
+	}
+	
+	private Double getRelativeFrequency(final String elemento, List<String> list) {
+		double concurrences = list.stream().filter(elemento::equals).count();
+		double listSize = list.size();
+		return concurrences/listSize;
+	}
+	
+	private Map<Integer, Double> getQuartilesIfListNotNull(List<String> list) {
+		return Quantiles.quartiles().indexes(1, 3).compute(list.stream().mapToDouble(Double::new).toArray());
 	}
 }
