@@ -1,12 +1,14 @@
 package es.amplia.micro.streaming.analytics.services.model;
 
+import java.util.Map;
+
 public class Stats {
 
 	private Double average;
 	private Double median;
 	private Double trend;
 	private Double typicalDeviation;
-	private Double quartiles;
+	private Map<Integer, Double> quartiles;
 	private Double max;
 	private Double min;
 	
@@ -14,7 +16,7 @@ public class Stats {
 		
 	}
 	
-	public Stats(Double average, Double median, Double trend, Double typicalDeviation, Double quartiles, Double max,
+	public Stats(Double average, Double median, Double trend, Double typicalDeviation, Map<Integer, Double> quartiles, Double max,
 			Double min) {
 		super();
 		this.average = average;
@@ -50,10 +52,10 @@ public class Stats {
 	public void setTypicalDeviation(Double typicalDeviation) {
 		this.typicalDeviation = typicalDeviation;
 	}
-	public Double getQuartiles() {
+	public Map<Integer, Double> getQuartiles() {
 		return quartiles;
 	}
-	public void setQuartiles(Double quartiles) {
+	public void setQuartiles(Map<Integer, Double> quartiles) {
 		this.quartiles = quartiles;
 	}
 	public Double getMax() {
