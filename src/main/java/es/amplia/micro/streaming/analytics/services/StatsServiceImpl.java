@@ -97,6 +97,6 @@ public class StatsServiceImpl implements StatsService {
 	}
 	
 	private Map<Integer, Double> getQuartilesIfListNotNull(List<String> list) {
-		return Quantiles.quartiles().indexes(1, 3).compute(list.stream().mapToDouble(Double::new).toArray());
+		return Quantiles.quartiles().indexes(1, 2, 3).compute(list.stream().mapToDouble(Double::new).toArray());
 	}
 }

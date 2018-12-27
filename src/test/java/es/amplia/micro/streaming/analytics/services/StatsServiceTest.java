@@ -1,13 +1,14 @@
 package es.amplia.micro.streaming.analytics.services;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Spy;
@@ -18,8 +19,11 @@ import es.amplia.micro.streaming.analytics.services.model.Stats;
 @RunWith(MockitoJUnitRunner.class)
 public class StatsServiceTest {
 
+	private static final String _5 = "5";
+	private static final String _4 = "4";
+	private static final String _3 = "3";
+	private static final String _1 = "1";
 	private static final String _50 = "50";
-	
 	private static List<String> emptyList;
 	private static List<String> nullList;
 	private static List<String> listNotEmpty;
@@ -27,12 +31,16 @@ public class StatsServiceTest {
 	@Spy
 	private StatsServiceImpl statsService;
 	
-	@BeforeClass
-	public static void init() {
+	@Before
+	public void init() {
 		emptyList = new ArrayList<String>();
 		nullList = null;
 		listNotEmpty = new ArrayList<String>();
-		listNotEmpty.add(_50);
+		listNotEmpty.add(_1);
+		listNotEmpty.add(_1);
+		listNotEmpty.add(_3);
+		listNotEmpty.add(_4);
+		listNotEmpty.add(_5);
 	}
 	
 	@Test
@@ -62,7 +70,7 @@ public class StatsServiceTest {
 		// when
 		double average = statsService.getAverage(listNotEmpty);
 		// then
-		assertNotNull(average);
+		assertEquals(2.8, average, 0);
 	}
 	
 	@Test
@@ -92,7 +100,7 @@ public class StatsServiceTest {
 		// when
 		double max = statsService.getMax(listNotEmpty);
 		// then
-		assertNotNull(max);
+		assertEquals(5.0, max, 0);
 	}
 	
 	@Test
@@ -122,7 +130,7 @@ public class StatsServiceTest {
 		// when
 		double median = statsService.getMedian(listNotEmpty);
 		// then
-		assertNotNull(median);
+		assertEquals(3.0, median, 0);
 	}
 	
 	@Test
@@ -132,7 +140,7 @@ public class StatsServiceTest {
 		// when
 		double median = statsService.getMedian(listNotEmpty);
 		// then
-		assertNotNull(median);
+		assertEquals(3.5, median, 0);
 	}
 	
 	@Test
@@ -162,7 +170,7 @@ public class StatsServiceTest {
 		// when
 		double min = statsService.getMin(listNotEmpty);
 		// then
-		assertNotNull(min);
+		assertEquals(1.0, min, 0);
 	}
 	
 	@Test
@@ -192,7 +200,9 @@ public class StatsServiceTest {
 		// when
 		Map<Integer, Double> quartiles = statsService.getQuartiles(listNotEmpty);
 		// then
-		assertNotNull(quartiles);
+		assertEquals(quartiles.get(1), 1.0, 0);
+		assertEquals(quartiles.get(2), 3.0, 0);
+		assertEquals(quartiles.get(3), 4.0, 0);
 	}
 	
 	@Test
@@ -252,7 +262,7 @@ public class StatsServiceTest {
 		// when
 		double trend = statsService.getTrend(listNotEmpty);
 		// then
-		assertNotNull(trend);
+		assertEquals(1.0, trend, 0);
 	}
 	
 	@Test
