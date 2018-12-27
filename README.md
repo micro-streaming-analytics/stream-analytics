@@ -12,7 +12,7 @@ our docker images name is springdocker as we defined in pom.xml
 Finally run:
 $ docker run -it -p 9999:8080 springdocker
 
-In fact, you could run RabbitMQ application due to docker-compose.yml file also present in this project, just run, in the root directory:
+In fact, you could run RabbitMQ application and MongoDB database due to docker-compose.yml file also present in this project, just run, in the root directory:
 $ docker-compose up -d
 
 
