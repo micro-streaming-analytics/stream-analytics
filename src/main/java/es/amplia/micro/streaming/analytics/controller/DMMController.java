@@ -1,6 +1,5 @@
 package es.amplia.micro.streaming.analytics.controller;
 
-import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,9 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 import static es.amplia.micro.streaming.analytics.utils.Constants.*;
 import es.amplia.micro.streaming.analytics.services.ManageDeviceService;
@@ -28,7 +24,7 @@ public class DMMController {
 	private RabbitMessageSender rabbitMessageSender;
 	
 	@RequestMapping(value=SEND_JSON_TO_RABBIT, method=RequestMethod.POST)
-	public RestResponse sendJsonToRabbit(@RequestBody String jsonRabbit) throws JsonParseException, JsonMappingException, IOException {
+	public RestResponse sendJsonToRabbit(@RequestBody String jsonRabbit) {
 		rabbitMessageSender.sendMessage(jsonRabbit);
 		return new RestResponse(HttpStatus.OK.value(), MESSAGE_SEND_TO_RABBIT_MQ_QUEU);
 	}
